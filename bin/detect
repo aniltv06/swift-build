@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+SNAPSHOTNAME=swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a
+
+echo “$SNAPSHOTNAME”
+exit 0
+
+

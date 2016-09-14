@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+#Linux OS Snapshot
+#https://swift.org/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a/swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a-ubuntu15.10.tar.gz
+
+#MAC OS Snapshot
+#https://swift.org/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a/swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a-osx.pkg
+
+SNAPSHOTNAME=swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a
+
+echo “Installing $SNAPSHOTNAME”
+
+cd $1
+curl https://swift.org/builds/development/ubuntu1510/$SNAPSHOTNAME/$SNAPSHOTNAME-ubuntu15.10.tar.gz -s -O
+
+mkdir -p ubuntu/swift
+
+tar -C ubuntu/swift -xvf $SNAPSHOTNAME-ubuntu15.10.tar.gz
+
+mv ubuntu/swift/$SNAPSHOTNAME-ubuntu15.10/* ubuntu/swift
+
+rm -f $SNAPSHOTNAME-ubuntu15.10.tar.gz
+
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+mkdir -p .profile.d
+cp -n ${LP_DIR}/.profile.d/* .profile.d/
+
+
+
